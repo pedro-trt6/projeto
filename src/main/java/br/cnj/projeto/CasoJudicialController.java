@@ -38,6 +38,11 @@ public class CasoJudicialController {
         return ResponseEntity.ok(casos);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<CasoJudicial> getCasoJudicial(@PathVariable int id) {
+        return ResponseEntity.ok(service.getCasoJudicial(id));
+    }
+
     @PostMapping
     public ResponseEntity<CasoJudicial> criarCaso(@RequestBody CasoJudicial novoCaso) {
         CasoJudicial caso = service.criarCaso(novoCaso);
@@ -45,11 +50,15 @@ public class CasoJudicialController {
         return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(caso);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<CasoJudicial> atualizarCaso(@PathVariable Long id, @RequestBody CasoJudicial casoAtualizado) {
-        CasoJudicial caso = service.atualizarCaso(id, casoAtualizado);
-        
-        return ResponseEntity.ok(caso);
+    @PutMapping
+    public ResponseEntity<CasoJudicial> atualizarCaso(@RequestBody CasoJudicial casoAtualizado) {
+        CasoJudicial caso = service.atualizarCaso(casoAtualizado);
+
+        if(caso != null) {
+            return ResponseEntity.ok(caso);
+        } else {
+           return ResponseEntity.noContent().build();
+        }
     }
 
     @PatchMapping("/{id}")
