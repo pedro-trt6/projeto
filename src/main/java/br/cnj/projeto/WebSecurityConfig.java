@@ -10,11 +10,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig {
 
-    @Autowired public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    /*@Autowired public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
         .withUser("pedro").roles("USER").password("{noop}123")
         .and()
@@ -32,5 +32,5 @@ public class WebSecurityConfig {
                     .hasRole("ADMIN").anyRequest().authenticated()
             )
             .httpBasic(Customizer.withDefaults()).build();
-    }
+    }*/
 }
