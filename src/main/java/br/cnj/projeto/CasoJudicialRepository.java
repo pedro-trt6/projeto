@@ -1,14 +1,14 @@
 package br.cnj.projeto;
 
-import java.util.List;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CasoJudicialRepository {
+public interface CasoJudicialRepository extends JpaRepository<CasoJudicial, Long> {
 
-    public List<CasoJudicial> findAll() {
+    /*public List<CasoJudicial> findAll() {
         return null;
-    }
+    }*/
+    CasoJudicial findByNumero(String numero);
 
 }
