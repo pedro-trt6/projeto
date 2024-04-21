@@ -1,4 +1,4 @@
-package br.cnj.projeto;
+package br.cnj.projeto.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,6 +7,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.cnj.projeto.model.CasoJudicial;
+import br.cnj.projeto.repository.CasoJudicialRepository;
 
 @Service
 public class CasoJudicialService {
@@ -35,12 +38,16 @@ public class CasoJudicialService {
     }
 
     public CasoJudicial getCasoJudicial(int numero) {
-        //return repository.findAll();
-        for (CasoJudicial caso : casos) {
+        return repository.findByNumero(numero);
+        /*for (CasoJudicial caso : casos) {
             if (caso.getNumero() == numero) return caso;
         };
 
-        return null;
+        return null;*/
+    }
+
+    public CasoJudicial getCasoJudicialTipoDecisao(int tipoDecisao) {
+        return repository.findByTipoDecisao(tipoDecisao);
     }
 
     public CasoJudicial criarCaso(CasoJudicial novoCaso) {
